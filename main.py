@@ -165,7 +165,7 @@ async def league_tables(interaction: discord.Integration,league:str)->None:
         error_logs(f"Error: {response.status_code}")
         await interaction.response.send_message('Failed to fetch',ephemeral=True)
 
-@bot.tree.command(name="help",description="Help")
+@bot.tree.command(name="help",description="Get a list of all commands.")
 async def help(interaction: discord.Integration)->None:
     try:
         embed=discord.Embed(colour=discord.Colour.dark_orange(),title="Powers of Nom.")
@@ -179,6 +179,36 @@ async def help(interaction: discord.Integration)->None:
         print('Help failed')
         error_logs(e)
         await interaction.response.send_message('Help failed',ephemeral=True)
+
+@bot.tree.command(name="info",description="Get Nom info")
+async def info(interaction: discord.Integration)->None:
+    try:
+        total_members = 0
+        for guild in bot.guilds:
+            total_members += guild.member_count
+        total_members-=len(bot.guilds)
+        embed=discord.Embed(colour=discord.Colour.dark_orange())
+        embed.set_author(icon_url="https://i.pinimg.com/564x/9a/bf/a0/9abfa0dc5ae0442470e9214453c3d7d2.jpg",name="Nom")
+        embed.add_field(name="",value="A multi-purpose Discord bot with gemini integration, football news,fetch weather report,\nand much more.",inline=False)
+        embed.add_field(name="Bot User",value=f"{bot.user}",inline=True)
+        embed.add_field(name="Guilds",value=f"{len(bot.guilds)}",inline=True)
+        embed.add_field(name="Members",value=f"{total_members}",inline=True)
+        embed.add_field(name="Prefix",value=f"/",inline=True)
+        embed.add_field(name="O.S.",value=f"Windows",inline=True)
+        embed.add_field(name="Links",
+                        value="[Repository](https://github.com/ankitdey-marsh/Nom)",
+                        inline=True)
+        embed.set_footer(text=f"© 2020-2024 Ankit Dey | Code licensed under the MIT License")
+        embed.set_image(
+            url="https://i.pinimg.com/736x/55/57/2a/55572a00eff9b0f0b4b836446d6ec476.jpg")
+        await interaction.response.send_message(embed=embed)
+        log_writer(interaction)
+        print('Help Success')
+    except Exception as e:
+        log_writer(interaction)
+        print('Help failed')
+        error_logs(e)
+        await interaction.response.send_message('Help failed',ephemeral=True)   
 
 @bot.tree.command(name="score_help",description="Competition codes for scores.")
 async def help(interaction: discord.Integration)->None:
