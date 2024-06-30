@@ -1,0 +1,278 @@
+2024-06-27 13:40:42,452 - Nom - Error: {'cod': '404', 'message': 'city not found'}
+2024-06-27 14:18:28,905 - Nom - Error: {'cod': '404', 'message': 'city not found'}
+2024-06-27 14:18:55,887 - Nom - Error: {'cod': '404', 'message': 'city not found'}
+2024-06-27 16:58:00,418 - Nom - Error: Greetings, friend! I'm here to assist you with any questions or queries you may have. Feel free to ask, and I'll do my best to provide you with helpful and informative responses.
+2024-06-27 16:58:57,075 - Nom - Error: Lionel Messi, the Argentine maestro, is a phenomenon on the football field. His mesmerizing dribbles, incisive passes, and clinical finishing have etched his name among the greatest of all time.
+2024-06-27 16:59:38,837 - Nom - Error: Lionel Messi, the maestro of modern football, weaves his magic on the field with mesmeric dribbling, deft passing, and an uncanny eye for goal. His low center of gravity and lightning-fast reflexes allow him to glide past defenders with effortless grace.
+2024-06-27 17:00:11,879 - Nom - Error: In the realm of football, Lionel Messi stands as an icon, a maestro who has graced the pitch with unparalleled brilliance. This Argentine talisman has left an indelible mark on the game, etching his name into the annals of history as one of the greatest to ever grace the sport.
+2024-06-27 17:01:19,944 - Nom - Error: Lionel Messi, the legendary Argentine footballer, has captivated the world with his mesmerizing skills and unwavering determination. Born in Rosario, Argentina, in 1987, he embarked on an extraordinary journey that saw him rise from humble beginnings to become one of the greatest players of all time.
+
+Messi's talent was evident from an early age.
+2024-06-27 17:01:49,052 - Nom - Error: Messi, the legendary Argentinian maestro, has captivated the world with his unparalleled skills and achievements on the pitch. From his breathtaking dribbles to his audacious goals, Messi's artistry has left an indelible mark on the beautiful game.
+2024-06-27 17:07:51,803 - Nom - Error: In the realm of felines, where graceful paws tread and melodious meows fill the air, there exists an enigmatic creature known as the Sphinx cat. This hairless marvel, with its wrinkled visage and captivating eyes, carries a captivating charm that has enchanted cat lovers worldwide.
+2024-06-27 17:10:45,200 - Nom - Error: response:
+GenerateContentResponse(
+    done=True,
+    iterator=None,
+    result=protos.GenerateContentResponse({
+      "candidates": [
+        {
+          "content": {
+            "parts": [
+              {
+                "text": "Of course, I can generate answers within 50 tokens, flowing continuously without bulleted lists. Here's an example:\n\n**Query:** How old is the Great Pyramid of Giza?\n\n**Answer:** Built around 4,500 years ago, the Great Pyramid of Giza stands as one of the world's most iconic and enduring structures."
+              }
+            ],
+            "role": "model"
+          },
+          "finish_reason": "STOP",
+          "index": 0,
+          "safety_ratings": [
+            {
+              "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+              "probability": "NEGLIGIBLE"
+            },
+            {
+              "category": "HARM_CATEGORY_HATE_SPEECH",
+              "probability": "NEGLIGIBLE"
+            },
+            {
+              "category": "HARM_CATEGORY_HARASSMENT",
+              "probability": "NEGLIGIBLE"
+            },
+            {
+              "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+              "probability": "NEGLIGIBLE"
+            }
+          ]
+        }
+      ],
+      "usage_metadata": {
+        "prompt_token_count": 23,
+        "candidates_token_count": 75,
+        "total_token_count": 98
+      }
+    }),
+)
+2024-06-27 17:12:38,350 - Nom - Error: In the realm of football, where legends are etched into the annals of history, one name stands tall: Lionel Messi. A maestro on the pitch, Messi's enchanting footwork, blistering pace, and uncanny ability to weave through defenders have mesmerized fans worldwide.
+2024-06-27 17:37:21,820 - Nom - Error: A virtuoso on the pitch, Lionel Messi has woven his magic across the globe, captivating hearts with his unparalleled skills. Hailing from Rosario, Argentina, he embarked on his footballing journey at the tender age of five, honing his talent at Newell's Old Boys.
+2024-06-27 17:38:49,629 - Nom - Error: Lionel Messi, the legendary Argentine footballer, has captivated the world with his exceptional skills and unwavering determination. Born in Rosario, Argentina, on June 24, 1987, Messi's journey to stardom began at an early age. His prodigious talent was evident from the start, and he quickly rose through the ranks of the local club, Newell's Old Boys. At the age of 13, Messi's family relocated to Barcelona, Spain, where he joined the renowned La Masia academy, the youth system of FC Barcelona. It was there that he honed his skills and developed into the player he is today.
+2024-06-27 17:40:48,429 - Nom - Error: In the realm of basic arithmetic, where numbers dance and equations unfold, we embark on a mathematical journey to unravel the enigma of 2+2. This seemingly simple question holds the key to unlocking the fundamentals of addition, a cornerstone of mathematical operations.
+2024-06-27 17:45:50,481 - Nom - Error: Lionel Andrés Messi is an Argentine professional footballer who plays as a forward for Ligue 1 club Paris Saint-Germain and captains the Argentina national team. Widely regarded as one of the greatest players of all time, Messi has won a record seven Ballon d'Or awards, a record six European Golden Shoes, and a record eight Pichichis.
+2024-06-27 17:53:35,226 - Nom - Error: **India**
+
+**Geography:**
+
+* Located in South Asia
+* Bordered by Pakistan, China, Nepal, Bhutan, Bangladesh, and Myanmar
+* Area: 3,287,263 sq km
+* Climate: Tropical monsoon, with three main seasons: summer (April-June), monsoon (June-September), and winter (October-
+2024-06-27 17:58:54,491 - Nom - Error: Meoww! I'm a little kitty cat, and I love to play! I love to chase my tail, and I love to cuddle with my humans.
+2024-06-27 18:04:35,400 - Nom - Error: Lionel Andrés Messi Cuccittini (born 24 June 1987) is an Argentine professional footballer who plays as a forward for the Ligue 1 club Paris Saint-Germain and captains the Argentina national team.
+2024-06-27 18:05:08,460 - Nom - Error: Lionel Andrés Messi is an Argentine professional footballer who plays as a forward for Ligue 1 club Paris Saint-Germain and captains the Argentina national team.
+2024-06-27 18:09:42,263 - Nom - Error: **FIFA World Cup**
+
+**Definition:**
+
+The FIFA World Cup is an international association football competition contested by the senior men's national teams of the members of the Fédération Internationale de Football Association (FIFA).
+2024-06-27 18:13:17,251 - Nom - Error: Lionel Andrés Messi Cuccittini (born 24 June 1987) is an Argentine professional footballer who plays as a forward for Ligue 1 club Paris Saint-Germain and captains the Argentina national team.
+2024-06-27 18:34:14,205 - Nom - Error: **Date:** February 17-21, 2023
+
+**Venue:** Arun Jaitley Stadium, Delhi, India
+
+**Format:** Fourth and final Test of the 2022-23 Border-Gav
+2024-06-27 18:42:33,146 - Nom - Error: Lionel Andrés Messi is an Argentine professional footballer widely regarded as one of the greatest players of all time.
+2024-06-27 20:54:42,103 - Nom - Error: Johan Cruyff was a Dutch professional footballer and manager, widely regarded as one of the greatest players of all time.
+2024-06-27 21:59:22,738 - Nom - Error: **Lionel Andrés Messi Cuccittini**, simply known as **Lionel Messi**, is an Argentine professional footballer widely regarded as one of the greatest players of all time.
+2024-06-27 22:04:53,666 - Nom - Error: Lionel Messi is widely considered one of the greatest football (soccer) players of all time.
+2024-06-27 22:05:37,168 - Nom - Error: Lionel Messi is widely considered one of the greatest football (soccer) players of all time.
+2024-06-27 22:07:47,949 - Nom - Error: ## States of India:
+
+**28 States:**
+
+1. Andhra Pradesh
+2. Arunachal Pradesh
+3. Assam
+4. Bihar
+5. Chhattisgarh
+6. Goa
+7. Gujarat
+8. Haryana
+9. Himachal Pradesh
+10. Jharkhand
+11. Karnataka
+12. Kerala
+13. Madhya Pradesh
+14. Maharashtra
+15. Manipur
+16. Meghalaya
+17. Mizoram
+18.
+2024-06-27 22:49:27,620 - Nom - Error: ## States of India:
+
+**28 States:**
+
+1. Andhra Pradesh
+2. Arunachal Pradesh
+3. Assam
+4. Bihar
+5. Chhattisgarh
+6. Goa
+7. Gujarat
+8. Haryana
+9. Himachal Pradesh
+10. Jharkhand
+11. Karnataka
+12. Kerala
+13. Madhya Pradesh
+14. Maharashtra
+15. Manipur
+16. Meghalaya
+17. Mizoram
+18.
+2024-06-27 22:50:49,631 - Nom - Error: ## States of India:
+
+**28 States:**
+
+1. Andhra Pradesh
+2. Arunachal Pradesh
+3. Assam
+4. Bihar
+5. Chhattisgarh
+6. Goa
+7. Gujarat
+8. Haryana
+9. Himachal Pradesh
+10. Jharkhand
+11. Karnataka
+12. Kerala
+13. Madhya Pradesh
+14. Maharashtra
+15. Manipur
+16. Meghalaya
+17. Mizoram
+18.
+2024-06-27 22:53:46,085 - Nom - Error: ## States of India:
+
+**28 States:**
+
+1. Andhra Pradesh
+2. Arunachal Pradesh
+3. Assam
+4. Bihar
+5. Chhattisgarh
+6. Goa
+7. Gujarat
+8. Haryana
+9. Himachal Pradesh
+10. Jharkhand
+11. Karnataka
+12. Kerala
+13. Madhya Pradesh
+14. Maharashtra
+15. Manipur
+16. Meghalaya
+17. Mizoram
+18.
+2024-06-27 22:54:23,845 - Nom - Error: ## States of India:
+
+**28 States:**
+
+1. Andhra Pradesh
+2. Arunachal Pradesh
+3. Assam
+4. Bihar
+5. Chhattisgarh
+6. Goa
+7. Gujarat
+8. Haryana
+9. Himachal Pradesh
+10. Jharkhand
+11. Karnataka
+12. Kerala
+13. Madhya Pradesh
+14. Maharashtra
+15. Manipur
+16. Meghalaya
+17. Mizoram
+18.
+2024-06-27 22:55:33,611 - Nom - Error: response:
+GenerateContentResponse(
+    done=True,
+    iterator=None,
+    result=protos.GenerateContentResponse({
+      "candidates": [
+        {
+          "content": {
+            "parts": [
+              {
+                "text": "## States of India:\n\n**Northern Region:**\n\n* Jammu and Kashmir\n* Himachal Pradesh\n* Punjab\n* Chandigarh\n* Haryana\n* Uttarakhand\n* Delhi\n\n**Eastern Region:**\n\n* West Bengal\n* Sikkim\n* Bihar\n* Jharkhand\n* Odisha\n\n**Central Region:**\n\n* Madhya Pradesh\n* Chhattisgarh\n* Rajasthan\n\n**Western Region:**\n\n* Gujarat\n* Maharashtra\n* Goa\n\n**Southern Region:**\n\n* Andhra Pradesh\n* Telangana\n* Karnataka\n"
+              }
+            ],
+            "role": "model"
+          },
+          "finish_reason": "STOP",
+          "index": 0,
+          "safety_ratings": [
+            {
+              "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+              "probability": "NEGLIGIBLE"
+            },
+            {
+              "category": "HARM_CATEGORY_HATE_SPEECH",
+              "probability": "NEGLIGIBLE"
+            },
+            {
+              "category": "HARM_CATEGORY_HARASSMENT",
+              "probability": "NEGLIGIBLE"
+            },
+            {
+              "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+              "probability": "NEGLIGIBLE"
+            }
+          ]
+        }
+      ],
+      "usage_metadata": {
+        "prompt_token_count": 6,
+        "candidates_token_count": 99,
+        "total_token_count": 105
+      }
+    }),
+)
+2024-06-29 01:21:10,470 - Nom - Error: response:
+GenerateContentResponse(
+    done=True,
+    iterator=None,
+    result=protos.GenerateContentResponse({
+      "candidates": [
+        {
+          "finish_reason": "RECITATION",
+          "index": 0
+        }
+      ],
+      "usage_metadata": {
+        "prompt_token_count": 14,
+        "total_token_count": 14
+      }
+    }),
+)
+2024-06-29 16:24:13,084 - Nom - Error: Error: 200
+2024-06-29 16:26:42,679 - Nom - Error: Error: 200
+2024-06-29 16:50:29,336 - Nom - Error: Error: 400
+2024-06-29 16:51:23,118 - Nom - Error: Error: 400
+2024-06-29 16:51:38,494 - Nom - Error: Error: 404
+2024-06-29 19:00:32,752 - Nom - Error: Error: 200
+2024-06-29 19:00:57,500 - Nom - Error: Error: 200
+2024-06-29 19:01:46,192 - Nom - Error: Error: 200
+2024-06-29 19:48:23,694 - Nom - Error: Error: 400
+2024-06-29 19:50:40,579 - Nom - Error: Error: 400
+2024-06-29 19:53:04,495 - Nom - Error: Error: 200
+2024-06-29 19:54:44,882 - Nom - Error: Error: 404
+2024-06-29 20:42:03,087 - Nom - Error: Error: 200
+2024-06-29 20:44:27,209 - Nom - Error: Error: 404
+2024-06-29 21:06:29,941 - Nom - Error: Error: 403
+2024-06-29 22:05:19,708 - Nom - Error: Error: 200
+2024-06-30 01:44:20,806 - Nom - Error: Error: 404
+2024-06-30 02:18:09,024 - Nom - Error: Error: 404
+2024-06-30 19:29:20,436 - Nom - Error: {'cod': '404', 'message': 'city not found'}
