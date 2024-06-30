@@ -168,10 +168,6 @@ async def league_tables(interaction: discord.Integration,league:str)->None:
         error_logs(f"Error: {response.status_code}")
         await interaction.response.send_message('Failed to fetch',ephemeral=True)
 
-class MyView(View):
-    def __init__(self):
-        super().__init__()
-        self.add_item(Button(label="GitHub Repository", style=discord.ButtonStyle.link, url="https://github.com/ankitdey-marsh/Nom", emoji="🐙"))
 
 
 @bot.tree.command(name="help",description="Get a list of all commands.")
@@ -180,8 +176,6 @@ async def help(interaction: discord.Integration)->None:
         embed=discord.Embed(colour=discord.Colour.dark_orange(),title="Powers of Nom.")
         embed.set_author(icon_url="https://i.pinimg.com/564x/9a/bf/a0/9abfa0dc5ae0442470e9214453c3d7d2.jpg",name="Nom")
         embed.add_field(name="", value="**/hello:** Greets the user.\n **/weather:** Gives a quick weather forecast.\n **/search:** Search up anything.\n **/score_league:** Shows league tables and group stages.\n **/score_matchday:** Shows latest matchday game updates.\n **/score_help:** Scores help for competition codes.\n", inline=False)
-        view = MyView()
-        await interaction.response.send_message(embed=embed, view=view)
         log_writer(interaction)
         print('Help Success')
     except Exception as e:
@@ -189,6 +183,12 @@ async def help(interaction: discord.Integration)->None:
         print('Help failed')
         error_logs(e)
         await interaction.response.send_message('Help failed',ephemeral=True)
+
+class MyView(View):
+    def __init__(self):
+        super().__init__()
+        self.add_item(Button(label="GitHub Repository", style=discord.ButtonStyle.link, url="https://github.com/ankitdey-marsh/Nom", emoji="🐙"))
+
 
 @bot.tree.command(name="info",description="Get Nom info")
 async def info(interaction: discord.Integration)->None:
@@ -211,7 +211,9 @@ async def info(interaction: discord.Integration)->None:
         embed.set_footer(text=f"© 2020-2024 Ankit Dey | Code licensed under the MIT License")
         embed.set_image(
             url="https://i.pinimg.com/736x/55/57/2a/55572a00eff9b0f0b4b836446d6ec476.jpg")
-        await interaction.response.send_message(embed=embed)
+        
+        view = MyView()
+        await interaction.response.send_message(embed=embed, view=view)
         log_writer(interaction)
         print('Help Success')
     except Exception as e:
