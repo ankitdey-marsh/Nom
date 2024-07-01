@@ -10,6 +10,7 @@ import google.generativeai as genai
 from random import choice,randint
 from itertools import cycle
 import asyncio
+from discord.ui import View, Button  
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
@@ -22,6 +23,8 @@ generation_config={"temperature":0.9,"top_p":1,"top_k":1,"max_output_tokens":300
 model=genai.GenerativeModel("gemini-1.5-pro",generation_config=generation_config)
 
 bot_statuses=cycle(["with my food","with my meow","with your heart"])
+
+
 
 @bot.event
 async def on_ready()->None:
@@ -165,13 +168,14 @@ async def league_tables(interaction: discord.Integration,league:str)->None:
         error_logs(f"Error: {response.status_code}")
         await interaction.response.send_message('Failed to fetch',ephemeral=True)
 
+
+
 @bot.tree.command(name="help",description="Get a list of all commands.")
 async def help(interaction: discord.Integration)->None:
     try:
         embed=discord.Embed(colour=discord.Colour.dark_orange(),title="Powers of Nom.")
         embed.set_author(icon_url="https://i.pinimg.com/564x/9a/bf/a0/9abfa0dc5ae0442470e9214453c3d7d2.jpg",name="Nom")
         embed.add_field(name="", value="**/hello:** Greets the user.\n **/weather:** Gives a quick weather forecast.\n **/search:** Search up anything.\n **/score_league:** Shows league tables and group stages.\n **/score_matchday:** Shows latest matchday game updates.\n **/score_help:** Scores help for competition codes.\n", inline=False)
-        await interaction.response.send_message(embed=embed)
         log_writer(interaction)
         print('Help Success')
     except Exception as e:
@@ -179,6 +183,12 @@ async def help(interaction: discord.Integration)->None:
         print('Help failed')
         error_logs(e)
         await interaction.response.send_message('Help failed',ephemeral=True)
+
+class MyView(View):
+    def __init__(self):
+        super().__init__()
+        self.add_item(Button(label="GitHub Repository", style=discord.ButtonStyle.link, url="https://github.com/ankitdey-marsh/Nom", emoji="🐙"))
+
 
 @bot.tree.command(name="info",description="Get Nom info")
 async def info(interaction: discord.Integration)->None:
@@ -201,7 +211,9 @@ async def info(interaction: discord.Integration)->None:
         embed.set_footer(text=f"© 2022-2024 Ankit Dey | Code licensed under the MIT License")
         embed.set_image(
             url="https://i.pinimg.com/736x/55/57/2a/55572a00eff9b0f0b4b836446d6ec476.jpg")
-        await interaction.response.send_message(embed=embed)
+        
+        view = MyView()
+        await interaction.response.send_message(embed=embed, view=view)
         log_writer(interaction)
         print('Help Success')
     except Exception as e:
@@ -224,6 +236,19 @@ async def help(interaction: discord.Integration)->None:
         print('Help failed')
         error_logs(e)
         await interaction.response.send_message('Help failed',ephemeral=True)
+
+
+# class MyView(discord.ui.View):  # Create a class called MyView that subclasses discord.ui.View
+#     @discord.ui.button(label="Click me!", style=discord.ButtonStyle.link)  # Create a button with the label "Click me!" with color Blurple
+#     async def button_callback(self, interaction: discord.Interaction, button: discord.ui.Button):
+#         await interaction.response.send_message("You clicked the button!")  # Send a message when the button is clicked
+
+
+# @bot.tree.command(name="button", description="A command to show a button.")
+# async def button(interaction: discord.Integration):
+#     await interaction.response.send_message("This is a button!", view=MyView())  # Send a message with our View class that contains the button
+
+
 def main()->None:
     bot.run(token)
 
