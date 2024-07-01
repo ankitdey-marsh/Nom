@@ -198,7 +198,7 @@ async def info(interaction: discord.Integration)->None:
         embed.add_field(name="Links",
                         value="[Repository](https://github.com/ankitdey-marsh/Nom)",
                         inline=True)
-        embed.set_footer(text=f"© 2020-2024 Ankit Dey | Code licensed under the MIT License")
+        embed.set_footer(text=f"© 2022-2024 Ankit Dey | Code licensed under the MIT License")
         embed.set_image(
             url="https://i.pinimg.com/736x/55/57/2a/55572a00eff9b0f0b4b836446d6ec476.jpg")
         await interaction.response.send_message(embed=embed)

@@ -276,3 +276,14 @@ GenerateContentResponse(
 2024-06-30 01:44:20,806 - Nom - Error: Error: 404
 2024-06-30 02:18:09,024 - Nom - Error: Error: 404
 2024-06-30 19:29:20,436 - Nom - Error: {'cod': '404', 'message': 'city not found'}
+2024-06-30 23:40:59,541 - Nom - Error: {'coord': {'lon': 21.2833, 'lat': 48.2}, 'weather': [{'id': 803, 'main': 'Clouds', 'description': 'broken clouds', 'icon': '04d'}], 'base': 'stations', 'main': {'temp': 300.35, 'feels_like': 301.33, 'temp_min': 300.35, 'temp_max': 301.25, 'pressure': 1009, 'humidity': 58, 'sea_level': 1009, 'grnd_level': 989}, 'visibility': 10000, 'wind': {'speed': 2.6, 'deg': 131, 'gust': 2.93}, 'clouds': {'all': 57}, 'dt': 1719771058, 'sys': {'type': 2, 'id': 2092337, 'country': 'HU', 'sunrise': 1719715077, 'sunset': 1719772735}, 'timezone': 7200, 'id': 717980, 'name': 'Mád', 'cod': 200}
+2024-07-01 00:07:15,060 - Nom - Error: 404 Not Found (error code: 10062): Unknown interaction
+2024-07-01 00:10:20,278 - Nom - Error: 404 Not Found (error code: 10062): Unknown interaction
+2024-07-01 00:13:06,854 - Nom - Error: 404 Not Found (error code: 10062): Unknown interaction
+2024-07-01 00:13:47,264 - Nom - Error: 404 Not Found (error code: 10062): Unknown interaction
+2024-07-01 00:16:03,021 - Nom - Error: 404 Not Found (error code: 10062): Unknown interaction
+2024-07-01 00:17:00,939 - Nom - Error: 404 Not Found (error code: 10062): Unknown interaction
+2024-07-01 00:51:20,240 - Nom - Error: 404 Not Found (error code: 10062): Unknown interaction
+2024-07-01 00:54:09,589 - Nom - Error: 404 Not Found (error code: 10062): Unknown interaction
+2024-07-01 00:55:44,496 - Nom - Error: Error: 404
+2024-07-01 00:56:25,508 - Nom - Error: Error: 404
