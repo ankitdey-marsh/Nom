@@ -15,7 +15,7 @@ from discord.ui import View, Button
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
 
-intents = discord.Intents.all()
+intents = discord.Intents.default()
 bot = commands.Bot(command_prefix='/', intents=intents)
 
 genai.configure(api_key=os.getenv('GENAI')) 
@@ -120,7 +120,12 @@ async def league_tables(interaction: discord.Integration,league:str)->None:
                 if home_score==None:
                     home_score='TBP'
                     away_score='TBP'
-                y = y + f'\t{data["matches"][i]["homeTeam"]["tla"]}    {home_score:3} - {away_score:<3}    {data["matches"][i]["awayTeam"]["tla"]}\n\n'
+                y = y + f'\t{data["matches"][i]["homeTeam"]["tla"]}    {home_score:3} - {away_score:<3}'
+                if data["matches"][i]["score"]["duration"]=="PENALTY_SHOOTOUT":
+                    y+="(P)"
+                    y+=f' {data["matches"][i]["awayTeam"]["tla"]}\n\n'
+                else:
+                    y+=f'    {data["matches"][i]["awayTeam"]["tla"]}\n\n'
         await interaction.response.send_message(f'```{y}```')
         log_writer(interaction)
         print('Score fetch successful')
