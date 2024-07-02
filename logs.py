@@ -7,7 +7,7 @@ from discord import app_commands
 import logging
 
 def log_writer(interaction)->None:
-    print(f"[ {interaction.user.name} ] - ( {interaction.channel.name} ) - ", end="")
+    print(f"[ {interaction.user.name} ] - [ {interaction.guild.name} ] - ( {interaction.channel.name} ) - ", end="")
 
 def error_logs(e)->None:
     logger = logging.getLogger('Nom')
