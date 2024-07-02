@@ -36,3 +36,4 @@ for any unfavourable actions performed by you
 
 2) Nom has ratelimits put in order to avoid spam, by using the bot you agree to follow these ratelimits and accept the fact
 that you can recieve a usage ban from the bot for attempting to spam the bot
+
