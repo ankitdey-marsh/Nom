@@ -22,7 +22,7 @@ genai.configure(api_key=os.getenv('GENAI'))
 generation_config={"temperature":0.9,"top_p":1,"top_k":1,"max_output_tokens":300} 
 model=genai.GenerativeModel("gemini-1.5-pro",generation_config=generation_config)
 
-bot_statuses=cycle(["with my food","with my meow","with your heart"])
+bot_statuses=cycle(["with my food","with my meow","with your heart","and nomnoming"])
 
 
 
@@ -30,7 +30,7 @@ bot_statuses=cycle(["with my food","with my meow","with your heart"])
 async def on_ready()->None:
     print(f'{bot.user} has connected to Discord!')
     await bot.tree.sync()
-    # await bot.change_presence(activity=discord.Game(name="with your heart"),status=discord.Status.do_not_disturb)
+    #await bot.change_presence(activity=discord.Game(name="with your heart"),status=discord.Status.do_not_disturb)
     change_status.start()
 
 @tasks.loop(seconds=60)
@@ -175,7 +175,8 @@ async def help(interaction: discord.Integration)->None:
     try:
         embed=discord.Embed(colour=discord.Colour.dark_orange(),title="Powers of Nom.")
         embed.set_author(icon_url="https://i.pinimg.com/564x/9a/bf/a0/9abfa0dc5ae0442470e9214453c3d7d2.jpg",name="Nom")
-        embed.add_field(name="", value="**/hello:** Greets the user.\n **/weather:** Gives a quick weather forecast.\n **/search:** Search up anything.\n **/score_league:** Shows league tables and group stages.\n **/score_matchday:** Shows latest matchday game updates.\n **/score_help:** Scores help for competition codes.\n", inline=False)
+        embed.add_field(name="", value="**/info:** Info about Nom.\n **/hello:** Greets the user.\n **/weather:** Gives a quick weather forecast.\n **/search:** Search up anything.\n **/score_league:** Shows league tables and group stages.\n **/score_matchday:** Shows latest matchday game updates.\n **/score_help:** Scores help for competition codes.\n", inline=False)
+        await interaction.response.send_message(embed=embed)
         log_writer(interaction)
         print('Help Success')
     except Exception as e:
@@ -199,14 +200,14 @@ async def info(interaction: discord.Integration)->None:
         total_members-=len(bot.guilds)
         embed=discord.Embed(colour=discord.Colour.dark_orange())
         embed.set_author(icon_url="https://i.pinimg.com/564x/9a/bf/a0/9abfa0dc5ae0442470e9214453c3d7d2.jpg",name="Nom")
-        embed.add_field(name="",value="A multi-purpose Discord bot with gemini integration, football news,fetch weather report,\nand much more.",inline=False)
+        embed.add_field(name="",value="A multi-purpose Discord bot with gemini integration, football news,fetch weather report, and much more.",inline=False)
         embed.add_field(name="Bot User",value=f"{bot.user}",inline=True)
         embed.add_field(name="Guilds",value=f"{len(bot.guilds)}",inline=True)
         embed.add_field(name="Members",value=f"{total_members}",inline=True)
         embed.add_field(name="Prefix",value=f"/",inline=True)
         embed.add_field(name="O.S.",value=f"Windows",inline=True)
-        embed.add_field(name="Links",
-                        value="[Repository](https://github.com/ankitdey-marsh/Nom)",
+        embed.add_field(name="Developer",
+                        value="[Ankit Dey](https://dub.sh/ankitdey)",
                         inline=True)
         embed.set_footer(text=f"© 2022-2024 Ankit Dey | Code licensed under the MIT License")
         embed.set_image(
@@ -236,17 +237,6 @@ async def help(interaction: discord.Integration)->None:
         print('Help failed')
         error_logs(e)
         await interaction.response.send_message('Help failed',ephemeral=True)
-
-
-# class MyView(discord.ui.View):  # Create a class called MyView that subclasses discord.ui.View
-#     @discord.ui.button(label="Click me!", style=discord.ButtonStyle.link)  # Create a button with the label "Click me!" with color Blurple
-#     async def button_callback(self, interaction: discord.Interaction, button: discord.ui.Button):
-#         await interaction.response.send_message("You clicked the button!")  # Send a message when the button is clicked
-
-
-# @bot.tree.command(name="button", description="A command to show a button.")
-# async def button(interaction: discord.Integration):
-#     await interaction.response.send_message("This is a button!", view=MyView())  # Send a message with our View class that contains the button
 
 
 def main()->None:
