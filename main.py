@@ -36,6 +36,22 @@ async def on_ready()->None:
 @tasks.loop(seconds=60)
 async def change_status()->None:
     await bot.change_presence(activity=discord.Game(next(bot_statuses)),status=discord.Status.idle)
+    
+channel_counters = {}
+@bot.event
+async def on_message(message:str)->None:
+    if message.author == bot.user:
+        return
+
+    if message.channel not in channel_counters:
+        channel_counters[message.channel] = 0
+
+    channel_counters[message.channel] += 1
+    if channel_counters[message.channel] == 10:
+        await message.channel.send("Oho i'm enjoying this!")
+        channel_counters[message.channel] = 0
+
+    await bot.process_commands(message)
 
 
 @bot.tree.command(name="hello", description="Say hello to the bot!")
