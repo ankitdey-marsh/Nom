@@ -2,3 +2,4 @@ discord
 python-dotenv
 requests
 google-generativeai
+newsapi-python

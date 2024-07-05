@@ -11,6 +11,7 @@ from random import choice,randint
 from itertools import cycle
 import asyncio
 from discord.ui import View, Button  
+from newsapi import NewsApiClient
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
@@ -23,15 +24,6 @@ generation_config={"temperature":0.9,"top_p":1,"top_k":1,"max_output_tokens":300
 model=genai.GenerativeModel("gemini-1.5-pro",generation_config=generation_config)
 
 bot_statuses=cycle(["with my food","with my meow","with your heart","and nomnoming"])
-
-
-
-@bot.event
-async def on_ready()->None:
-    print(f'{bot.user} has connected to Discord!')
-    await bot.tree.sync()
-    #await bot.change_presence(activity=discord.Game(name="with your heart"),status=discord.Status.do_not_disturb)
-    change_status.start()
 
 @tasks.loop(seconds=60)
 async def change_status()->None:
@@ -88,6 +80,139 @@ async def weather(interaction: discord.Integration,location:str)->None:
         error_logs(response)
         print("Weather failed.")
         await interaction.response.send_message(f"{interaction.user.mention} Invalid city name.", ephemeral=True)
+
+@bot.tree.command(name="business_news",description="Get latest business updates.")
+@app_commands.describe(country_code="Enter your country code: ")
+async def news(interaction: discord.Integration,country_code:str)->None:
+    try:
+        api_endpoint="https://newsapi.org/v2/top-headlines"
+        params={
+            "country":{country_code},
+            "apiKey": os.getenv('NEWS_API'),
+            "category":"business"
+        }
+        response = requests.get(api_endpoint,params=params)
+        response=response.json()
+        embed=discord.Embed(colour=discord.Colour.dark_orange(),title="Latest Business News")
+        embed.set_author(icon_url="https://i.pinimg.com/564x/9a/bf/a0/9abfa0dc5ae0442470e9214453c3d7d2.jpg",name="Nom")
+        urls=[]
+        for i in range(0,5):
+            x=response["articles"][i]["description"]
+            if x==None:
+                x=""
+            if response["articles"][i]["title"]=="[Removed]":
+                continue
+            embed.add_field(name=f'{i+1}) {response["articles"][i]["title"]}', value=f'{x}\n\n', inline=False)
+            urls.append(response["articles"][i]["url"])
+            
+            view1 = MyView4(urls)
+
+        await interaction.response.send_message(embed=embed,view=view1)
+        log_writer(interaction)
+        print('News fetch successful')
+    except:
+        await interaction.response.send_message("News fetch unsuccessful")
+        print("Score fetch failed.")
+        error_logs(f"Error: {response.status_code}")
+        await interaction.response.send_message('Failed to fetch',ephemeral=True)
+
+
+class MyView4(View):
+    def __init__(self,urls):
+        super().__init__()
+        num=["1st","2nd","3rd","4th","5th"]
+        for i in range(0,len(urls)):
+            self.add_item(Button(label=f"{num[i]}", style=discord.ButtonStyle.link, url=f'{urls[i]}', emoji="💼"))
+
+
+@bot.tree.command(name="sports_news",description="Get latest sports updates.")
+@app_commands.describe(country_code="Enter your country code: ")
+async def news(interaction: discord.Integration,country_code:str)->None:
+    try:
+        api_endpoint="https://newsapi.org/v2/top-headlines"
+        params={
+            "country":{country_code},
+            "apiKey": os.getenv('NEWS_API'),
+            "category":"sports"
+        }
+        response = requests.get(api_endpoint,params=params)
+        response=response.json()
+        embed=discord.Embed(colour=discord.Colour.dark_orange(),title="Latest Sports News")
+        embed.set_author(icon_url="https://i.pinimg.com/564x/9a/bf/a0/9abfa0dc5ae0442470e9214453c3d7d2.jpg",name="Nom")
+        urls=[]
+        for i in range(0,5):
+            x=response["articles"][i]["description"]
+            if x==None:
+                x=""
+            if response["articles"][i]["title"]=="[Removed]":
+                continue
+            embed.add_field(name=f'{i+1}) {response["articles"][i]["title"]}', value=f'{x}\n\n', inline=False)
+            urls.append(response["articles"][i]["url"])
+            
+            view1 = MyView3(urls)
+
+        await interaction.response.send_message(embed=embed,view=view1)
+        log_writer(interaction)
+        print('News fetch successful')
+    except:
+        await interaction.response.send_message("News fetch unsuccessful")
+        print("Score fetch failed.")
+        error_logs(f"Error: {response.status_code}")
+        await interaction.response.send_message('Failed to fetch',ephemeral=True)
+
+
+class MyView3(View):
+    def __init__(self,urls):
+        super().__init__()
+        num=["1st","2nd","3rd","4th","5th"]
+        for i in range(0,len(urls)):
+            self.add_item(Button(label=f"{num[i]}", style=discord.ButtonStyle.link, url=f'{urls[i]}', emoji="⚽"))
+
+
+
+@bot.tree.command(name="news",description="Get latest news updates.")
+@app_commands.describe(country_code="Enter your country code: ")
+async def news(interaction: discord.Integration,country_code:str)->None:
+    try:
+        api_endpoint="https://newsapi.org/v2/top-headlines"
+        params={
+            "country":{country_code},
+            "apiKey": os.getenv('NEWS_API')
+        }
+        response = requests.get(api_endpoint,params=params)
+        response=response.json()
+        embed=discord.Embed(colour=discord.Colour.dark_orange(),title="Breaking News")
+        embed.set_author(icon_url="https://i.pinimg.com/564x/9a/bf/a0/9abfa0dc5ae0442470e9214453c3d7d2.jpg",name="Nom")
+        urls=[]
+        for i in range(0,5):
+            x=response["articles"][i]["description"]
+            if x==None:
+                x=""
+            if response["articles"][i]["title"]=="[Removed]":
+                continue
+            embed.add_field(name=f'{i+1}) {response["articles"][i]["title"]}', value=f'{x}\n\n', inline=False)
+            urls.append(response["articles"][i]["url"])
+            
+            view1 = MyView2(urls)
+
+        await interaction.response.send_message(embed=embed,view=view1)
+        log_writer(interaction)
+        print('News fetch successful')
+    except:
+        await interaction.response.send_message("News fetch unsuccessful")
+        print("Score fetch failed.")
+        error_logs(f"Error: {response.status_code}")
+        await interaction.response.send_message('Failed to fetch',ephemeral=True)
+
+
+class MyView2(View):
+    def __init__(self,urls):
+        super().__init__()
+        num=["1st","2nd","3rd","4th","5th"]
+        for i in range(0,len(urls)):
+            self.add_item(Button(label=f"{num[i]}", style=discord.ButtonStyle.link, url=f'{urls[i]}', emoji="🗞️"))
+
+
 
 @bot.tree.command(name="search",description="Search in Gemini.")
 @app_commands.describe(search="Enter your prompt: ")
@@ -196,8 +321,26 @@ async def help(interaction: discord.Integration)->None:
     try:
         embed=discord.Embed(colour=discord.Colour.dark_orange(),title="Powers of Nom.")
         embed.set_author(icon_url="https://i.pinimg.com/564x/9a/bf/a0/9abfa0dc5ae0442470e9214453c3d7d2.jpg",name="Nom")
-        embed.add_field(name="", value="**/info:** Info about Nom.\n **/hello:** Greets the user.\n **/weather:** Gives a quick weather forecast.\n **/search:** Search up anything.\n **/score_league:** Shows league tables and group stages.\n **/score_matchday:** Shows latest matchday game updates.\n **/score_help:** Scores help for competition codes.\n", inline=False)
-        await interaction.response.send_message(embed=embed)
+        # embed.add_field(name="**Hi**", value="\t**/info:** Info about Nom.\n **/hello:** Greets the user.\n **/weather:** Gives a quick weather forecast.\n **/search:** Search up anything.\n **/score_league:** Shows league tables and group stages.\n **/score_matchday:** Shows latest matchday game updates.\n **/score_help:** Scores help for competition codes.\n", inline=False)
+        embed.add_field(name='**General:**', value='''
+        **`/info`**: Info about Nom.
+        **`/hello`**: Greets the user.
+        **`/weather`**: Gives a quick weather forecast.
+        **`/search`**: Search up anything.
+        ''', inline=False)  
+        embed.add_field(name='**Football:**', value='''
+        **`/score_league:`**: Shows league tables and group stages.
+        **`/score_matchday:`**: Shows latest matchday game updates.
+        **`/score_help:`**: Scores help for competition codes.
+        **`/search`**: Search up anything.
+        ''', inline=False) 
+        embed.add_field(name='**News:**', value='''
+        **`/news:`**: Shows breaking news from desired country.
+        **`/sports_news:`**: Shows latest sports news from desired country.
+        **`/business_news:`**: Scores latest business related news.
+        ''', inline=False) 
+        view=MyView5()
+        await interaction.response.send_message(embed=embed,view=view)
         log_writer(interaction)
         print('Help Success')
     except Exception as e:
@@ -206,11 +349,18 @@ async def help(interaction: discord.Integration)->None:
         error_logs(e)
         await interaction.response.send_message('Help failed',ephemeral=True)
 
+class MyView5(View):
+    def __init__(self):
+        super().__init__()
+        self.add_item(Button(label=f"News Country codes", style=discord.ButtonStyle.link, url=f'https://newsapi.org/docs/endpoints/top-headlines'))
+
+
+
 class MyView(View):
     def __init__(self):
         super().__init__()
         self.add_item(Button(label="GitHub Repository", style=discord.ButtonStyle.link, url="https://github.com/ankitdey-marsh/Nom", emoji="🐙"))
-
+        
 
 @bot.tree.command(name="info",description="Get Nom info")
 async def info(interaction: discord.Integration)->None:
@@ -226,7 +376,7 @@ async def info(interaction: discord.Integration)->None:
         embed.add_field(name="Guilds",value=f"{len(bot.guilds)}",inline=True)
         embed.add_field(name="Members",value=f"{total_members}",inline=True)
         embed.add_field(name="Prefix",value=f"/",inline=True)
-        embed.add_field(name="O.S.",value=f"Windows",inline=True)
+        embed.add_field(name="Webpage",value=f"[Official Nom](https://dub.sh/officialnom)",inline=True)
         embed.add_field(name="Developer",
                         value="[Ankit Dey](https://dub.sh/ankitdey)",
                         inline=True)
@@ -259,6 +409,11 @@ async def help(interaction: discord.Integration)->None:
         error_logs(e)
         await interaction.response.send_message('Help failed',ephemeral=True)
 
+@bot.event
+async def on_ready()->None:
+    print(f'{bot.user} has connected to Discord!')
+    await bot.tree.sync()
+    change_status.start()
 
 def main()->None:
     bot.run(token)
