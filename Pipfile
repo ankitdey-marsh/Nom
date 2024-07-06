@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+discord = "*"
+python-dotenv = "*"
+requests = "*"
+google-generativeai = "*"
+newsapi-python = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3"
