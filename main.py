@@ -27,7 +27,7 @@ bot_statuses=cycle(["with my food","with my meow","with your heart","and nomnomi
 
 @tasks.loop(seconds=60)
 async def change_status()->None:
-    await bot.change_presence(activity=discord.Game(next(bot_statuses)),status=discord.Status.idle)
+    await bot.change_presence(activity=discord.Game(next(bot_statuses)),status=discord.Status.online)
     
 channel_counters = {}
 @bot.event
@@ -110,11 +110,11 @@ async def news(interaction: discord.Integration,country_code:str)->None:
         await interaction.response.send_message(embed=embed,view=view1)
         log_writer(interaction)
         print('News fetch successful')
-    except:
-        await interaction.response.send_message("News fetch unsuccessful")
-        print("Score fetch failed.")
-        error_logs(f"Error: {response.status_code}")
-        await interaction.response.send_message('Failed to fetch',ephemeral=True)
+    except Exception as e:
+        await interaction.response.send_message("News fetch unsuccessful",ephemeral=True)
+        log_writer(interaction)
+        print('News fetch successful')
+        error_logs(f"Error: {e}")
 
 
 class MyView4(View):
@@ -154,11 +154,12 @@ async def news(interaction: discord.Integration,country_code:str)->None:
         await interaction.response.send_message(embed=embed,view=view1)
         log_writer(interaction)
         print('News fetch successful')
-    except:
-        await interaction.response.send_message("News fetch unsuccessful")
-        print("Score fetch failed.")
-        error_logs(f"Error: {response.status_code}")
-        await interaction.response.send_message('Failed to fetch',ephemeral=True)
+    except Exception as e:
+        await interaction.response.send_message("News fetch unsuccessful",ephemeral=True)
+        log_writer(interaction)
+        print('News fetch unsuccessful')
+        error_logs(f"Error: {e}")
+        
 
 
 class MyView3(View):
@@ -198,11 +199,11 @@ async def news(interaction: discord.Integration,country_code:str)->None:
         await interaction.response.send_message(embed=embed,view=view1)
         log_writer(interaction)
         print('News fetch successful')
-    except:
-        await interaction.response.send_message("News fetch unsuccessful")
-        print("Score fetch failed.")
-        error_logs(f"Error: {response.status_code}")
-        await interaction.response.send_message('Failed to fetch',ephemeral=True)
+    except Exception as e:
+        await interaction.response.send_message("News fetch unsuccessful",ephemeral=True)
+        error_logs(f"Error: {e}")
+        log_writer(interaction)
+        print('News fetch unsuccessful')
 
 
 class MyView2(View):
