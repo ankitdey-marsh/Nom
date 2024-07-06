@@ -1,1 +1,0 @@
-from newsapi import NewsApiClient
