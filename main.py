@@ -23,11 +23,11 @@ genai.configure(api_key=os.getenv('GENAI'))
 generation_config={"temperature":0.9,"top_p":1,"top_k":1,"max_output_tokens":300} 
 model=genai.GenerativeModel("gemini-1.5-pro",generation_config=generation_config)
 
-bot_statuses=cycle(["with my food","with my meow","with your heart","and nomnoming"])
+bot_statuses=cycle(["/help & /info","my poppo","/help & /info","to his heartbeat"])
 
 @tasks.loop(seconds=60)
 async def change_status()->None:
-    await bot.change_presence(activity=discord.Game(next(bot_statuses)),status=discord.Status.online)
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=next(bot_statuses)), status=discord.Status.online)
     
 channel_counters = {}
 
