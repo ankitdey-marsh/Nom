@@ -30,6 +30,7 @@ async def change_status()->None:
     await bot.change_presence(activity=discord.Game(next(bot_statuses)),status=discord.Status.online)
     
 channel_counters = {}
+
 @bot.event
 async def on_message(message:str)->None:
     if message.author == bot.user:
