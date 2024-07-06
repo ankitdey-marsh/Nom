@@ -1,11 +1,9 @@
 #! /bin/env bash
 
-if (!(Test-Path -Path ./env)) {
-    python -m venv env
-}
+pip install pipenv
 
-env\Scripts\Activate.ps1
+pipenv install
 
-pip install -r .\requirements.txt
+pipenv shell
 
 exit 0
