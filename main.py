@@ -339,7 +339,7 @@ async def help(interaction: discord.Integration)->None:
         embed.add_field(name='**News:**', value='''
         **`/news:`**: Shows breaking news from desired country.
         **`/sports_news:`**: Shows latest sports news from desired country.
-        **`/business_news:`**: Scores latest business related news.
+        **`/business_news:`**: Shows latest business related news.
         ''', inline=False) 
         view=MyView5()
         await interaction.response.send_message(embed=embed,view=view)
