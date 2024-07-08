@@ -12,6 +12,7 @@ from itertools import cycle
 import asyncio
 from discord.ui import View, Button  
 from newsapi import NewsApiClient
+from datetime import datetime,timedelta
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
@@ -317,6 +318,43 @@ async def league_tables(interaction: discord.Integration,league:str)->None:
         await interaction.response.send_message('Failed to fetch',ephemeral=True)
 
 
+@bot.tree.command(name="stock",description="Latest info about a stock.")
+@app_commands.describe(ticker="Enter ticker: ")
+async def stock(interaction: discord.Integration,ticker:str)->None:
+    stock_key=os.getenv('TICKER_API')
+    today = datetime.now()
+    while True:
+        yesterday = today - timedelta(days=1)
+        if yesterday.weekday()<5:
+            break
+        today = yesterday
+
+    yesterday_str = str(yesterday)
+    x = yesterday_str.split()[0]
+    api_endpoint=f'https://api.polygon.io/v1/open-close/{ticker.upper()}/{x}?adjusted=true&apiKey={stock_key}'
+    try:
+        response=requests.get(api_endpoint)
+        response=response.json()
+        embed=discord.Embed(colour=discord.Colour.dark_orange(),title="Stock details.")
+        embed.set_author(icon_url="https://i.pinimg.com/564x/9a/bf/a0/9abfa0dc5ae0442470e9214453c3d7d2.jpg",name="Nom")
+        embed.add_field(name=f'**Date: ```{response["from"]}```**', value=f'', inline=False)
+        embed.add_field(name=f'**Ticker: ```{response["symbol"]}```**', value=f'', inline=False)
+        embed.add_field(name=f'**Open: ```${response["open"]}```**', value=f'', inline=False)
+        embed.add_field(name=f'**High: ```${response["high"]}```**', value=f'', inline=False)
+        embed.add_field(name=f'**Low: ```${response["low"]}```**', value=f'', inline=False)
+        embed.add_field(name=f'**Close: ```${response["close"]}```**', value=f'', inline=False)
+        embed.add_field(name=f'**Volume: ```{response["volume"]}```**', value=f'', inline=False)
+        await interaction.response.send_message(embed=embed)
+        log_writer(interaction)
+        print('Stock fetch successful')
+    except:
+        log_writer(interaction)
+        print("Stock fetch failed.")
+        error_logs(f"Error: {interaction}")
+        await interaction.response.send_message('Failed to fetch',ephemeral=True)
+    
+
+
 
 @bot.tree.command(name="help",description="Get a list of all commands.")
 async def help(interaction: discord.Integration)->None:
@@ -340,7 +378,10 @@ async def help(interaction: discord.Integration)->None:
         **`/news:`**: Shows breaking news from desired country.
         **`/sports_news:`**: Shows latest sports news from desired country.
         **`/business_news:`**: Shows latest business related news.
-        ''', inline=False) 
+        ''', inline=False)
+        embed.add_field(name='**Stocks:**', value='''
+        **`/stock:`**: Shows desired stock info.
+        ''', inline=False)  
         view=MyView5()
         await interaction.response.send_message(embed=embed,view=view)
         log_writer(interaction)
