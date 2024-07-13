@@ -31,6 +31,6 @@ If you would like to contribute to this project, you can do so by creating a [PR
     - Twitter : https://twitter.com/marshdit/
     - Github : https://github.com/ankitdey-marsh/
     - Mastodon: https://mastodon.social/@ankit_dey
-    - LinkedIN : https://www.linkedin.com/in/ankit-dey-kiit/
+    - LinkedIn : https://www.linkedin.com/in/ankit-dey-kiit/
 
 Feel free to suggest any kind of improvements
